@@ -297,6 +297,13 @@ The Barplots above shows the number of gays infected with covid. Visually gays w
 
 ### Numerical Results
 
+```{r}
+table3 <- xtabs(~infected + treatment, data=Gay)
+rowPerc(table3)
+colPerc(table3)
+```
+
+The numerical results show that in the infected gays, **80%** had taken the placebo, while **20%** had taken the vaccine. For those who are OK, **48%** had taken the placebo, and **52%** had taken the vaccine. Overall, **3.2%** of gay individuals on the placebo have covid compared to **0.77%** on the vaccine, indicating that the vaccine reduces infection rates. These findings suggest the vaccine is effective in lowering covid rates in gays. This aligns with the barplots showing the vaccine's effectiveness.
 
 
 ### Inferential Results
