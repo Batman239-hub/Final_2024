@@ -245,9 +245,23 @@ The odds ratio indicates that females who received the vaccine were nearly **1.9
 
 ## LGBTQ
 
-
 ### Summary of LGBTQ
 
+```{r}
+gay_summary <- Gay %>%
+  group_by(treatment, infected) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  pivot_wider(names_from = infected, values_from = count, values_fill = 0)
+gay_summary <- gay_summary %>%
+  mutate(total = rowSums(select(., -treatment)))
+gay_column_totals <- gay_summary %>%
+  summarise(across(where(is.numeric), sum)) %>%
+  mutate(treatment = "Total")
+gay_summary <- bind_rows(gay_summary, gay_column_totals)
+gay_summary
+```
+
+This is the given information so far for the gays. There are 3060 gays. 60 have covid while 3000 are OK. This isn't enough to show a trend so now let us add a barplot for a visual representation.
 
 ### Visual Results
 
