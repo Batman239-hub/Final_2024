@@ -215,7 +215,7 @@ Femalefish <- fisher.test(table2)
 Femalefish
 ```
 
-The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p = 2 \times 10^{-8}\)) or **0.00000002**, indicating that the observed differences in infection rates between the vaccine and placebo groups are very unlikely to have occurred by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **1.9** shows that females who received the vaccine were nearly **1.9** times more likely to get covid compared to those who received the placebo. These results suggest that the vaccine is **ineffective** at preventing covid in females.
+The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p = 1 \times 10^{-8}\)) or **0.00000001**, indicating that the observed differences in infection rates between the vaccine and placebo groups are very unlikely to have occurred by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **1.9** shows that females who received the vaccine were nearly **1.9** times more likely to get covid compared to those who received the placebo. These results suggest that the vaccine is **ineffective** at preventing covid in females.
 
 ```{r}
 # Calculate effectiveness
@@ -308,6 +308,14 @@ The numerical results show that in the infected gays, **80%** had taken the plac
 
 ### Inferential Results
 
+```{r}
+chisq.test(table3)
+chisqtestGC(table3)
+Gayfish <- fisher.test(table3)
+Gayfish
+```
+
+The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p = 7 \times 10^{-7}\)) or **0.0000007**, indicating that the observed differences in infection rates between the vaccine and placebo groups are very unlikely to have occurred by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **4.3** shows that gay individuals who received the vaccine were nearly **4.3** times more likely to get covid compared to those who received the placebo. These results suggest that the vaccine is **ineffective** at preventing covid in gays.
 
 
 ### Effectivness Results: low to high
