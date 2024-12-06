@@ -413,10 +413,19 @@ The numerical results show that among infected drug users, **8.3%** had taken th
 
 ### Inferential Results
 
+```{r}
+chisq.test(table4)
+chisqtestGC(table4)
+DrugUserfish <- fisher.test(table4)
+DrugUserfish
+```
 
+The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p = 3 \times 10^{-12}\)) or **0.000000000003**, indicating that the observed differences in infection rates between the vaccine and placebo groups are very unlikely to have occurred by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected.
 
+The odds ratio is approximately **0.087**, showing that drug users who received the vaccine were **11.5** times less likely to get covid compared to those who received the placebo. These results suggest that the vaccine is **highly effective** at preventing covid in drug users. This aligns with the numerical results showing reduced infection rates among vaccinated individuals in this population.
 
 ### Effectivness Results: low to high
+
 
 
 # Overall Results and Conclusions
