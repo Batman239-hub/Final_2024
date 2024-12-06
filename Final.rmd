@@ -346,7 +346,28 @@ The odds ratio indicates that gay individuals who received the vaccine were near
 
 ### Summary of Druggies
 
+```{r}
+druguser_summary <- DrugUser %>%
+  group_by(treatment, infected) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  pivot_wider(names_from = infected, values_from = count, values_fill = 0)
 
+# Add total column
+druguser_summary <- druguser_summary %>%
+  mutate(total = rowSums(select(., -treatment)))
+
+# Add total row for each treatment
+druguser_column_totals <- druguser_summary %>%
+  summarise(across(where(is.numeric), sum)) %>%
+  mutate(treatment = "Total")
+
+# Combine the totals with the main data
+druguser_summary <- bind_rows(druguser_summary, druguser_column_totals)
+
+druguser_summary
+```
+
+This is the given information so far for the drug users. There are 3060 drug users. 60 have covid while 3000 are OK. This isn't enough to show a trend so now let us add a barplot for a visual representation.
 
 ### Visual Results
 
